@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { get, getDatabase, ref, set, onValue, remove,update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { get, getDatabase, ref, set, onValue, remove, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCX3r37GAHv8pGKSQfGp_dLUsLl21wMHqA",
@@ -125,9 +125,9 @@ async function CreateUser(user) {
                 Nome: displayName,
                 Imagem: photoURL,
                 Email: email,
-                Lista_tarefas:  [""] ,
+                Lista_tarefas: [""],
                 Lista_tarefas_ADM: Lista_tarefas_ADM.length > 0 ? Lista_tarefas_ADM : [""],
-                ADM: "false"
+                ADM: false
             };
             await set(usuariosRef, userData);
             console.log("Novo documento criado");
@@ -519,7 +519,7 @@ function Carregar(id, lista_De_Usuarios_A_ser_adicionados) {
                     <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
                     <path d="M21 6V29" stroke="white" stroke-width="4"></path>
                 </svg>
-            </button>` : `<button  id="${uid}" ${State ? `class="disabled button2" disabled` : `class="button2"` }>Ok</button>
+            </button>` : `<button  id="${uid}" ${State ? `class="disabled button2" disabled` : `class="button2"`}>Ok</button>
             `}
             </div>
         </div>`;
@@ -588,13 +588,13 @@ function Carregar(id, lista_De_Usuarios_A_ser_adicionados) {
                 btn.addEventListener('click', function () {
                     document.querySelector(".Create_ATV").style.display = "flex"
                     document.querySelector("main").innerHTML += addAtv(data.ADM)
-                    Abrir_User(data.id,btn.id).then(resp =>{
+                    Abrir_User(data.id, btn.id).then(resp => {
                         btn.disabled = true
                     })
                 })
                 document.querySelector(".ButtonDelete").addEventListener("click", ev => {
                     document.querySelector(".Create_ATV").style.display = "none";
-    
+
                 })
             })
             document.querySelector(".ButtonDelete").addEventListener("click", ev => {
@@ -606,26 +606,13 @@ function Carregar(id, lista_De_Usuarios_A_ser_adicionados) {
                     btn.disabled = true; // Adicione esta linha para desativar o botão quando pressionado
                     btn.classList.add("disabled");
 
-                    const usuariosRef = ref(database, 'usuarios/' + data.id + "/Lista_tarefas/" + (btn.id - 1) )
+                    const usuariosRef = ref(database, 'usuarios/' + data.id + `${data.ADM ? "Lista_tarefas_ADM" : "/Lista_tarefas/"}` + (btn.id - 1))
                     get(usuariosRef).then((snapshot) => {
                         const data = snapshot.val();
-                        console.log(data)
-                        let userData = {
-                            id: data.id,
-                            Tarefas: data.Tarefas,
-                            Para: data.Para,
-                            Data: data.Data,
-                            State: true,
-                            Referecia: data.Referecia
-                        };
-            
-                        update(usuariosRef, userData);
-            
-                        const Caminho = ref(database, 'usuarios/' + userData.Referecia + "/Lista_tarefas_ADM/" + (btn.id - 1) )
-                        get(Caminho).then((snapshot) => {
-                            const data = snapshot.val();
+                        let Lista = data.Para
+                        Lista.forEach(element => {
                             console.log(data)
-                            let Data = {
+                            let userData = {
                                 id: data.id,
                                 Tarefas: data.Tarefas,
                                 Para: data.Para,
@@ -633,13 +620,29 @@ function Carregar(id, lista_De_Usuarios_A_ser_adicionados) {
                                 State: true,
                                 Referecia: data.Referecia
                             };
-            
-                            update(Caminho, Data);
-                        })
+
+                            update(usuariosRef, userData);
+
+                        });
+                        const Caminho = ref(database, 'usuarios/' + data.Referecia + "/Lista_tarefas_ADM/" + (btn.id - 1))
+                            get(Caminho).then((snapshot) => {
+                                const data = snapshot.val();
+                                console.log(data)
+                                let Data = {
+                                    id: data.id,
+                                    Tarefas: data.Tarefas,
+                                    Para: data.Para,
+                                    Data: data.Data,
+                                    State: true,
+                                    Referecia: data.Referecia
+                                };
+
+                                update(Caminho, Data);
+                            })
                     })
                 })
             })
-            
+
 
         })
         .catch((error) => {
