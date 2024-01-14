@@ -1,0 +1,783 @@
+body,
+html {
+    width: 100%;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+}
+
+* {
+    font-family: sans-serif;
+}
+
+main {
+    width: 100%;
+    background-color: #f0eaf0;
+    padding: 0px;
+    margin: 0px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+header {
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+#Title {
+    font-size: 20px;
+    font-family: unset;
+    font-weight: 600;
+}
+
+
+main {
+    min-height: 100vh;
+    padding-top: 1rem;
+}
+
+
+.usericon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: grey;
+}
+
+
+.container {
+    min-width: 300px;
+    max-width: 600px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: #dac9da;
+}
+
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.search__input {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #f4f2f2;
+    border: none;
+    color: #646464;
+    padding: 0.7rem 1rem;
+    border-radius: 30px;
+    width: 400px;
+    transition: all ease-in-out .5s;
+    margin-right: -2.5rem;
+}
+
+.search__input:hover,
+.search__input:focus {
+    box-shadow: 0 0 1em #00000013;
+}
+
+.search__input:focus {
+    outline: none;
+    background-color: #f0eeee;
+}
+
+.search__input::-webkit-input-placeholder {
+    font-weight: 100;
+    color: #ccc;
+}
+
+.search__input:focus+.search__button {
+    background-color: #f0eeee;
+}
+
+.search__button {
+    border: none;
+    background-color: #f4f2f2;
+    margin-top: .1em;
+}
+
+.search__button:hover {
+    cursor: pointer;
+}
+
+.search__icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: #b4b4b4;
+}
+
+.bar_top {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* CSS */
+.button-26 {
+    appearance: button;
+    background-color: #1652F0;
+    border: 1px solid #1652F0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Graphik, -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 1.15;
+    overflow: visible;
+    padding: 12px 16px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transition: all 80ms ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+}
+
+.button-26:disabled {
+    opacity: .5;
+}
+
+.button-26:focus {
+    outline: 0;
+}
+
+.button-26:hover {
+    background-color: #0A46E4;
+    border-color: #0A46E4;
+}
+
+.button-26:active {
+    background-color: #0039D7;
+    border-color: #0039D7;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    flex: 1 1 0%;
+    background-color: rgba(55, 65, 81, 1);
+    height: 1px;
+    max-height: 1px;
+}
+
+.Table {
+    display: grid;
+    grid-template-columns: 0.6fr 2fr 0.6fr;
+    gap: 0px 0px;
+    height: 20px;
+}
+
+.list-card {
+    width: 100%;
+    height: 390px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 10px;
+}
+
+.Card {
+    margin-top: 20px;
+    user-select: none;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 0.6fr 1.8fr 0.8fr;
+    gap: 0px 0px;
+    background-color: rgb(167, 161, 161);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.bin-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgb(255, 95, 95);
+    cursor: pointer;
+    border: 3px solid rgb(255, 201, 201);
+    transition-duration: 0.3s;
+    border: none;
+}
+
+.bin-bottom {
+    width: 15px;
+}
+
+.bin-top {
+    width: 17px;
+    transform-origin: right;
+    transition-duration: 0.3s;
+}
+
+.bin-button:hover .bin-top {
+    transform: rotate(45deg);
+}
+
+.bin-button:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+.bin-button:active {
+    transform: scale(0.9);
+}
+
+.situacao {
+    width: 20px;
+    height: 20px;
+    border: 3px solid black;
+    border-radius: 50%;
+    background: linear-gradient(90deg, red, red, #000, red, red);
+    /* Gradiente verde neon */
+    background-size: 200% 200%;
+    /* Tamanho do gradiente */
+    color: #000;
+    /* Cor do texto, ajuste conforme necessário */
+    text-shadow: 0 0 10px red;
+    /* Adiciona um efeito de sombra ao texto */
+    animation: neon-glow 1.5s linear infinite;
+    /* Adiciona uma animação de brilho */
+}
+
+.situacaotrue {
+    width: 20px;
+    height: 20px;
+    border: 3px solid black;
+    border-radius: 50%;
+    /* Gradiente verde neon */
+    background-size: 200% 200%;
+    /* Tamanho do gradiente */
+    color: #000;
+    background-color: green;
+}
+
+@keyframes neon-glow {
+    0% {
+        background-position: 200% 50%;
+    }
+
+    100% {
+        background-position: -200% 50%;
+    }
+}
+
+.Data {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.Tarefas {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.Acoes {
+    grid-area: 1 / 3 / 2 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Create_ATV {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.Fundo_list_user {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
+section {
+    margin: 0;
+    padding: 0;
+}
+
+.Create_ATV form {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 530px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.Create_ATV_User form{
+    height: 450px;
+}
+
+.TitleScetion {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ListSection {
+    width: 90%;
+    height: 290px;
+}
+
+
+#checklist {
+    --background: #fff;
+    --text: #414856;
+    --check: #4f29f0;
+    --disabled: #c3c8de;
+    --border-radius: 10px;
+    background-color: rgb(163, 156, 156);
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.ButtonConfirm,
+.ButtonDelete {
+    width: 100%;
+    border: 2px solid #24b4fb;
+    background-color: #24b4fb;
+    border-radius: 0.3em;
+    padding: 0.5em 1.2em 0.5em 1em;
+    transition: all ease-in-out 0.2s;
+    font-size: 16px;
+}
+
+.ButtonConfirm span,
+.ButtonDelete span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ButtonConfirm:hover {
+    background-color: #0071e2;
+}
+
+.ButtonDelete:hover {
+    background-color: red;
+}
+
+.ButtonDelete {
+    background-color: rgb(247, 42, 42);
+    border: none;
+}
+
+.SectionButton {
+    width: 90%;
+    height: 120px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/* Hide the default checkbox */
+.container1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.container1 {
+    width: 90%;
+    display: flex;
+    gap: 10px;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    background: #606062;
+    border-radius: 7px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.30), 0px 1px 1px rgba(0, 5);
+}
+
+/* When the checkbox is checked, add a blue background */
+.container1 input:checked~.checkmark {
+    background-image: linear-gradient(#255CD2, #1D52C1)
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container1 input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container1 .checkmark:after {
+    left: 0.45em;
+    top: 0.20em;
+    width: 0.24em;
+    height: 0.6em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+
+ul {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    list-style-type: none;
+    width: 100%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#checklist::-webkit-scrollbar {
+    width: 10px;
+}
+
+#checklist::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+#checklist::-webkit-scrollbar-track {
+    background-color: #ddd;
+}
+
+
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border-radius: calc(45px/2);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+}
+
+.UsuarioSelecionadoIMG {
+    width: 45px;
+    height: 45px;
+    background-color: grey;
+    border-radius: 50%;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+/* plus sign */
+.sign {
+    width: 100%;
+    font-size: 2.2em;
+    color: white;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Btn:active {
+    transform: translate(2px, 2px);
+}
+
+.Btn:hover {
+    transform: scale(1.1);
+}
+
+.ADDUSer {
+    padding-left: 0.5rem;
+    width: 90%;
+    height: 60px;
+    display: flex;
+    gap: 5px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    align-items: center;
+}
+
+.button_list_user_close {
+    position: relative;
+    width: 2.5em;
+    height: 2.5em;
+    border: none;
+    background: rgba(180, 83, 107, 0.11);
+    border-radius: 5px;
+    transition: background 0.5s;
+    margin-right: 1.1rem;
+}
+
+.X {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2em;
+    height: 1.5px;
+    background-color: rgb(255, 255, 255);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.Y {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2em;
+    height: 1.5px;
+    background-color: #fff;
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    top: -70%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    font-size: 12px;
+    background-color: rgb(19, 22, 24);
+    color: rgb(187, 229, 236);
+    border: none;
+    border-radius: 3px;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.button_list_user_close:hover {
+    background-color: rgb(211, 21, 21);
+}
+
+.button_list_user_close:active {
+    background-color: rgb(130, 0, 0);
+}
+
+.button_list_user_close:hover>.close {
+    animation: close 0.2s forwards 0.25s;
+}
+
+@keyframes close {
+    100% {
+        opacity: 1;
+    }
+}
+
+.BGK_list_user {
+    width: 300px;
+    height: 180px;
+    background-color: whitesmoke;
+    font-family: monospace;
+    color: rgb(19, 18, 18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.title_list_user_selection {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title_list_user_selection h3 {
+    margin-left: 1.1rem;
+}
+
+.list_user_selection {
+    padding-left: 1.1rem;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    gap: 5px;
+}
+
+.user_list_selection {
+    width: 60px;
+    height: 60px;
+    background-color: grey;
+    border-radius: 50%;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+
+.button2 {
+    display: inline-block;
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    color: #090909;
+    width: 55px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 0.2em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+}
+
+.button2:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.button2:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    top: 100%;
+    width: 140%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+
+.button2:after {
+    content: "";
+    position: absolute;
+    left: 55%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.45);
+    top: 180%;
+    width: 160%;
+    height: 190%;
+    background-color: #009087;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+
+.button2:hover {
+    color: #ffffff;
+    border: 1px solid #009087;
+}
+
+.button2:hover:before {
+    top: -35%;
+    background-color: #009087;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2:hover:after {
+    top: -45%;
+    background-color: #009087;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.ButtonOpen {
+    border: 2px solid #24b4fb;
+    background-color: #24b4fb;
+    border-radius: 0.2em;
+    width: 60px;
+    height: 40px;
+    transition: all ease-in-out 0.2s;
+    font-size: 16px;
+}
+
+.ButtonOpen span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ButtonOpen:hover {
+    background-color: #0071e2;
+    color: white;
+}
+
+.disabled {
+    pointer-events: none; /* Impede eventos de clique no botão */
+    opacity: 0.5; /* Reduz a opacidade para indicar visualmente que o botão está desativado */
+    /* Adicione outros estilos conforme necessário */
+}
